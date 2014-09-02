@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<service name= "tmsWebService" >   
+    <description>列表查询</description>   
+    <parameter name= "ServiceObjectSupplier" locked="false" >   
+        org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+    </parameter>   
+    <parameter name= "SpringBeanName" >testService</parameter>
+    <parameter name= "SpringBeanName" >userService</parameter>
+<!--     隐藏不想服务调用方法 -->
+    <excludeOperations>
+        <operation>getService</operation>  
+    </excludeOperations>
+    
+    <messageReceivers>   
+        <messageReceiver mep= "http://www.w3.org/2004/08/wsdl/in-only"   
+             class = "org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"  />   
+        <messageReceiver mep= "http://www.w3.org/2004/08/wsdl/in-out"   
+             class = "org.apache.axis2.rpc.receivers.RPCMessageReceiver"  />   
+    </messageReceivers>   
+</service>

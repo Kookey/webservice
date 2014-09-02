@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <display-name>Apache-Axis2</display-name>
+    <context-param>  
+        <param-name>logbackConfigLocation</param-name>   
+        <param-value>classpath:logback.xml</param-value>   
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>AxisServlet</servlet-name>
+        <servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+      <welcome-file>index.html</welcome-file>
+      <welcome-file>/axis2-web/index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
