@@ -86,6 +86,8 @@
     <!-- the monitoring of spring by druid -->
     <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
     </bean>
+    <bean id="is_login" class="com.flux.tmsws.interceptor.LoginRequiredInterceptor">
+    </bean>
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"  scope="prototype">
         <property name="patterns">
             <list>
@@ -96,5 +98,6 @@
 	<aop:config proxy-target-class="true">
     <aop:advisor advice-ref="druid-stat-interceptor"
         pointcut-ref="druid-stat-pointcut" />
+    <aop:advisor advice-ref="is_login" pointcut-ref="druid-stat-pointcut"/>
     </aop:config>
 </beans>

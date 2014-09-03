@@ -15,6 +15,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flux.tmsws.dao.UserDao;
+import com.flux.tmsws.pojo.DataInfo;
 import com.flux.tmsws.pojo.User;
 
 /**
@@ -50,7 +51,10 @@ public class UserDaoTest{
 	
 	@Test
 	public void testfindUserById(){
-		User user = userDao.findUserById("2");
-		logger.warn(user.getId()+","+user.getPassword());
+		DataInfo dataInfo = new DataInfo();
+		dataInfo.setUserId("1200315");
+		dataInfo.setUDF01("2");
+		User result = userDao.findUser(dataInfo);
+		logger.warn(result.getId()+","+result.getPassword());
 	}
 }

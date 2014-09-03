@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.flux.tmsws.dao.UserDao;
+import com.flux.tmsws.pojo.DataInfo;
 import com.flux.tmsws.pojo.User;
 
 public class UserDaoImpl implements UserDao{
@@ -31,9 +32,9 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User findUserById(String id) {
+	public User findUser(DataInfo dataInfo) {
 		String sql = "select id,username,password from TEST_USER where id=?";
-		return jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<User>(){
+		return jdbcTemplate.queryForObject(sql, new Object[]{dataInfo.getUDF01()}, new RowMapper<User>(){
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
