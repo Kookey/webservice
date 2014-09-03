@@ -32,7 +32,7 @@ public class UserDaoTest{
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
 
-	@Test
+//	@Test
 	public void testFindAll(){
 		List<User> users = userDao.findAll();
 		logger.warn("" + users.size());
@@ -46,5 +46,11 @@ public class UserDaoTest{
 		int affectedRows =  userDao.insertUser(user);
 		Assert.assertEquals(affectedRows, 1);
 		logger.warn("the number of rows affected: "+affectedRows);
+	}
+	
+	@Test
+	public void testfindUserById(){
+		User user = userDao.findUserById("2");
+		logger.warn(user.getId()+","+user.getPassword());
 	}
 }
