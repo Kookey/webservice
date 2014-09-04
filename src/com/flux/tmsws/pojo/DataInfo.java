@@ -2,6 +2,8 @@ package com.flux.tmsws.pojo;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class DataInfo implements Serializable {
 
 	private static final long serialVersionUID = -2536571463483285945L;
@@ -66,6 +68,7 @@ public class DataInfo implements Serializable {
 	private String UDF58;
 	private String UDF59;
 	private String UDF60;
+	@JsonIgnore
 	private String userId;
 	public String getUDF01() {
 		return UDF01;

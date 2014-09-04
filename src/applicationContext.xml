@@ -78,16 +78,21 @@
     </bean>
     <bean id="userDao" class="com.flux.tmsws.dao.Impl.UserDaoImpl">
     </bean>
+    <bean id="dataInfoDao" class="com.flux.tmsws.dao.Impl.DataInfoImpl">
+    </bean>
+    <bean id="userService" class="com.flux.tmsws.service.UserService" >
+    </bean>
+    <bean id="wSService" class="com.flux.tmsws.service.Impl.WSServiceImpl">
+    </bean>
     <bean id="applicationContext" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder"></bean>
-    <bean id="testService" class="com.flux.tmsws.service.WebServiceTest" >  
-    </bean>
-    <bean id="userService" class="com.flux.tmsws.service.UserService" >  
-    </bean>
-    <!-- the monitoring of spring by druid -->
+    
+    <bean id="wSController" class="com.flux.tmsws.controller.WSController"></bean>
+    
     <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
     </bean>
     <bean id="is_login" class="com.flux.tmsws.interceptor.LoginRequiredInterceptor">
     </bean>
+    
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"  scope="prototype">
         <property name="patterns">
             <list>
@@ -95,9 +100,10 @@
              </list>
         </property>
     </bean>
+    
 	<aop:config proxy-target-class="true">
     <aop:advisor advice-ref="druid-stat-interceptor"
         pointcut-ref="druid-stat-pointcut" />
-    <aop:advisor advice-ref="is_login" pointcut-ref="druid-stat-pointcut"/>
+    <aop:advisor advice-ref="is_login" pointcut="execution(* com.flux.tmsws.service.WSService.*(..))"/>
     </aop:config>
 </beans>

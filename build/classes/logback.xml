@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-    </encoder>
-  </appender>
-   
-  <logger name="com.flux.tmsws.service" level="TRACE"/>
-  
-  <root level="DEBUG">
-    <appender-ref ref="STDOUT" />
-  </root>
+<configuration debug="true">
+    <property name="LOG_HOME" value="../../../log" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/webserivce.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/%d{yyyy/MM}/log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<logger name="com.flux.tmsws" level="WARN">
+	   <appender-ref ref="FILE" />
+	</logger>
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
 </configuration>

@@ -4,8 +4,7 @@
     <parameter name= "ServiceObjectSupplier" locked="false" >   
         org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
     </parameter>   
-    <parameter name= "SpringBeanName" >testService</parameter>
-    <parameter name= "SpringBeanName" >userService</parameter>
+    <parameter name= "SpringBeanName" >wSController</parameter>
 <!--     隐藏不想服务调用方法 -->
     <excludeOperations>
         <operation>getService</operation>  

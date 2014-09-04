@@ -29,9 +29,11 @@ public class LoginRequiredInterceptor implements MethodInterceptor  {
 			if(isExit>0){
 				result = invocation.proceed();
 			}else{
+				result = "{\"UDF01\":\"111\",\"UDF02\":\"用户名在系统中不存在\"}";
 				logger.error("the userId is not exit in rwsys_user");
 			}
 		}else{
+			result = "{\"UDF01\":\"222\",\"UDF02\":\"参数必须是DataInfo对象\"}";
 			logger.error("the pars be get by invocation.getArguments is not DataInfo class");
 		}
 		return result;
