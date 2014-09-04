@@ -4,6 +4,8 @@ import com.flux.tmsws.pojo.DataInfo;
 
 public interface WSService {
 
-	String getDataInfoJson(DataInfo dataInfo);
+	public String getOrderTrackJson(DataInfo dataInfo);
+
+	public String getCustomerJson(DataInfo dataInfo);
 
 }

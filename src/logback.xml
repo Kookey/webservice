@@ -23,9 +23,9 @@
 			</pattern>
 		</encoder>
 	</appender>
-	<logger name="com.flux.tmsws" level="WARN">
-	   <appender-ref ref="FILE" />
-	</logger>
+<!-- 	<logger name="com.flux.tmsws" level="WARN"> -->
+<!-- 	   <appender-ref ref="FILE" /> -->
+<!-- 	</logger> -->
 	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</root>
