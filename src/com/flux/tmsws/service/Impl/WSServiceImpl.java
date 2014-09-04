@@ -19,8 +19,22 @@ public class WSServiceImpl implements WSService {
 	private DataInfoDao dataInfoDao;
 	
 	@Override
-	public String getDataInfoJson(DataInfo dataInfo){
+	public String getOrderTrackJson(DataInfo dataInfo){
 		DataInfo resultInfo = dataInfoDao.queryOrderTrackInfo(dataInfo);
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		try {
+			result = mapper.writeValueAsString(resultInfo);
+			logger.info(result);
+		} catch (JsonProcessingException e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+
+	@Override
+	public String getCustomerJson(DataInfo dataInfo) {
+		DataInfo resultInfo = dataInfoDao.queryCustomerInfo(dataInfo);
 		ObjectMapper mapper = new ObjectMapper();
 		String result = "";
 		try {

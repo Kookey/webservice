@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.flux.tmsws.pojo.DataInfo;
-import com.flux.tmsws.pojo.User;
 
 public class LoginRequiredInterceptor implements MethodInterceptor  {
 

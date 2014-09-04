@@ -4,6 +4,8 @@ import com.flux.tmsws.pojo.DataInfo;
 
 public interface DataInfoDao {
 
-	DataInfo queryOrderTrackInfo(DataInfo dataInfo);
+	public DataInfo queryOrderTrackInfo(DataInfo dataInfo);
+
+	public DataInfo queryCustomerInfo(DataInfo dataInfo);
 
 }

@@ -27,7 +27,7 @@ public class WSControllerTest {
 	@Test
 	public void getOrderTrackInfoTest(){
 		DataInfo dataInfo = new DataInfo();
-		String result = wSService.getDataInfoJson(dataInfo);
+		String result = wSService.getOrderTrackJson(dataInfo);
 		logger.warn(result);
 	}
 }
